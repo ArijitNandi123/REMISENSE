@@ -621,7 +621,7 @@ input[type="submit"] {
   text-shadow: var(--text-shadow);
   text-transform: none;
 
-  font-size: 5rem;
+  font-size: 4rem;
   letter-spacing: 0.4rem;
 }
 
