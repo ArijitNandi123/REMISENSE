@@ -95,8 +95,7 @@ def convert_to_pdf(file_path, output_path):
 # ============================================================ model ============================================================ 
 
 
-data = pd.read_csv(r"C:\Users\MSHigh School\Downloads\Remisense.ai-Webapp-main\Remisense.ai-Webapp-main\static\Data\Testing.csv")
-
+data = pd.read_csv(os.path.join("static","Data", "Training.csv"))
 df = pd.DataFrame(data)
 cols = df.columns
 cols = cols[:-1]
@@ -127,9 +126,7 @@ def predict(symptom):
 
     return predicted_disease, confidence_score
 
-with open(r"C:\Users\MSHigh School\Downloads\Remisense.ai-Webapp-main\Remisense.ai-Webapp-main\static\Data\Testing.csv", newline='') as f:
-
-        
+with open('static/Data/Testing.csv', newline='') as f:
         reader = csv.reader(f)
         symptoms = next(reader)
         symptoms = symptoms[:len(symptoms)-1]
@@ -329,8 +326,7 @@ def Importance_of_Games():
     return render_template('index.html')
 
 # Load your trained model
-heart_disease_model = pickle.load(open(r"C:\Users\MSHigh School\Downloads\Remisense.ai-Webapp-main\Remisense.ai-Webapp-main\ML\heart_disease_model.sav", 'rb'))
-
+heart_disease_model = pickle.load(open('ML/heart_disease_model.sav', 'rb'))
 
 @app.route('/heart-disease', methods=['GET', 'POST'])
 def heart_disease():
@@ -385,8 +381,7 @@ def heart_disease():
 
 
 # Load your trained model
-lung_cancer_model = pickle.load(open(r"C:\Users\MSHigh School\Downloads\Remisense.ai-Webapp-main\Remisense.ai-Webapp-main\ML\lung_cancer_model.sav", 'rb'))
-
+lung_cancer_model = pickle.load(open('ML/lung_cancer_model.sav', 'rb'))
 
 
 @app.route('/lung-cancer', methods=['GET', 'POST'])
