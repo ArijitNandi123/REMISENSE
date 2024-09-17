@@ -79,12 +79,14 @@
             color: #f1c40f; /* Moon icon for dark mode */
         }
 
-        /* For tablets and smaller devices */
+/* For tablets and smaller devices */
 @media (max-width: 768px) {
     .mode-toggle {
-        top: 1.5rem; /* Adjust slightly upward */
+        top: 1.5rem; /* Adjust upward */
         right: 2rem; /* Adjust right positioning */
-        font-size: 1.5rem; /* Smaller icon size for mobile */
+        font-size: 1.5rem; /* Slightly smaller icon size for mobile */
+        width: 3rem; /* Set a minimum width for visibility */
+        height: 3rem; /* Set a minimum height for visibility */
     }
 }
 
@@ -93,8 +95,12 @@
     .mode-toggle {
         top: 1rem; /* Further adjust upward */
         right: 1rem; /* Further adjust right positioning */
-        font-size: 1.2rem; /* Even smaller icon size */
+        font-size: 1.8rem; /* Slightly larger icon size */
+        width: 4rem; /* Increase width for better visibility */
+        height: 4rem; /* Increase height for better visibility */
     }
+}
+
     </style>
 </head>
 
