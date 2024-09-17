@@ -763,6 +763,52 @@ input[type="submit"] {
   text-transform: none;
   padding: 1rem;
 }
+/* Mobile View Adjustments */
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  .book .row2 {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: center;
+    gap: 1.5rem; /* Reduced gap for mobile view */
+  }
+
+  .book .row2 form {
+    flex: 1 1 90%; /* Take up more width on smaller screens */
+    padding: 1.5rem; /* Reduced padding for mobile view */
+  }
+
+  .book .row2 form h3 {
+    font-size: 2.5rem; /* Smaller font size for mobile view */
+    padding-bottom: 0.5rem; /* Reduced padding for mobile view */
+  }
+
+  .book .row2 form .box {
+    font-size: 1.4rem; /* Smaller font size for mobile view */
+    padding: 0.8rem; /* Reduced padding for mobile view */
+  }
+}
+
+/* For screens smaller than 480px */
+@media (max-width: 480px) {
+  .book .row2 {
+    gap: 1rem; /* Further reduced gap for very small screens */
+  }
+
+  .book .row2 form {
+    flex: 1 1 100%; /* Full width for very small screens */
+    padding: 1rem; /* Further reduced padding for very small screens */
+  }
+
+  .book .row2 form h3 {
+    font-size: 2rem; /* Further reduced font size for very small screens */
+  }
+
+  .book .row2 form .box {
+    font-size: 1.2rem; /* Further reduced font size for very small screens */
+    padding: 0.6rem; /* Further reduced padding for very small screens */
+  }
+}
 
 /* Doctors Section */
 .doctors .box-container {
