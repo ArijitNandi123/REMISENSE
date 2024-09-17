@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remisense</title>
+    <link rel="icon" href="./static/images/house-medical-solid.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/style.css">
+
+    <style>
+        .owl-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .owl-dot {
+            height: 13px;
+            width: 13px;
+            margin: 0 5px;
+            outline: none !important;
+            border-radius: 50%;
+            border: 2px solid var(--green) !important;
+            transition: all 0.3s ease;
+        }
+
+        .owl-dot.active {
+            width: 35px;
+            border-radius: 14px;
+        }
+
+        .owl-dot.active,
+        .owl-dot:hover {
+            background: var(--green) !important;
+        }
+
+
+
+
+        /*MODE -DARK AND LIGHT */
+
+        /* Dark/Light Mode Toggle Icon */
+        .mode-toggle {
+            position: fixed; /* Keep it fixed in place */
+            top: 2.5rem; /* Adjust slightly downward */
+            right: 5rem; /* Adjust slightly leftward */
+            cursor: pointer;
+            font-size: 2.5rem; /* Slightly larger */
+            z-index: 1000; /* Make sure it stays on top */
+        }
+
+        /* Default (Light Mode) */
+        body.light-mode {
+            background-color: #f3f9fa;
+            color: #000000;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #01130e;
+            color: #ffffff;
+        }
+
+        .mode-toggle #theme-icon {
+            transition: color 0.3s ease;
+        }
+
+        body.light-mode .mode-toggle #theme-icon {
+            color: #b0d8e7; /* Sun icon for light mode */
+        }
+
+        body.dark-mode .mode-toggle #theme-icon {
+            color: #f1c40f; /* Moon icon for dark mode */
+        }
+
+        /* For tablets and smaller devices */
+@media (max-width: 768px) {
+    .mode-toggle {
+        top: 1.5rem; /* Adjust slightly upward */
+        right: 2rem; /* Adjust right positioning */
+        font-size: 1.5rem; /* Smaller icon size for mobile */
+    }
+}
+
+/* For very small devices (e.g., mobile phones in portrait mode) */
+@media (max-width: 480px) {
+    .mode-toggle {
+        top: 1rem; /* Further adjust upward */
+        right: 1rem; /* Further adjust right positioning */
+        font-size: 1.2rem; /* Even smaller icon size */
+    }
+}
+    </style>
+</head>
+
+<body class="light-mode"> <!-- Default to light mode -->
+
+    <header class="header">
+        <a href="{{url_for('index')}}" class="logo"><i class="fas fa-house-medical"></i> Remisense</a>
+        <nav class="navbar">
+            {% if username %}
+            <a href="{{url_for('index')}}#home">Home</a>
+            <a href="{{url_for('index')}}#services">Services</a>
+            <a href="{{url_for('index')}}#book">Book</a>
+            <a href="{{url_for('index')}}#scans">Scans</a>
+            <a href="{{url_for('index')}}#blogs">Blogs</a>
+            <a href="{{url_for('index')}}#about">About</a>
+            <a href="{{url_for('profile')}}"><span class="fas fa-user"></span></a>
+            {% else %}
+            <a href="{{url_for('login')}}">Login</a>
+            {% endif %}
+        </nav>
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </header>
+
+
+
+
+    <!-- Dark/Light Mode Toggle Button -->
+
+    <div class="mode-toggle">
+        <i class="fas fa-sun" id="theme-icon" onclick="toggleTheme()"></i>
+    </div>
+
+    <section class="home" id="home">
+        <div class="image">
+            <img src="../static/images/health-professional-team-animate.svg" alt="">
+        </div>
+        <div class="content">
+            <h3>Welcome to <span style="color: #16a085;">Remisense</span> <br> <span style="font-size: 4.0rem;">Suraksha , Sushrusha And Suswasthya The "3S" Moto Our Telemedicine Healthcare</span></h3>
+            <p>Artificial Intelligence (AI) has revolutionized the field of telemedicine and healthcare, offering innovative solutions to enhance patient care, improve efficiency, and streamline various processes.</p>
+            <a href="#services" class="btn-home">Learn more<span class="fas fa-chevron-right"></span></a>
+        </div>
+    </section>
+
+
+
+    
+    <script>
+        // Dark/Light mode toggle function
+        function toggleTheme() {
+            const currentMode = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+            if (currentMode === 'light') {
+                document.body.classList.remove('light-mode');
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.body.classList.add('light-mode');
+            }
+        }
+    </script>
+
+
+    <h1 class="heading">What we<span> Provide ?</span></h1>
+
+    <section class="icons-container">
+        <div class="glass">
+            <i class="fas fa-handshake"></i>
+            <h3>175+</h3>
+            <p>Personalized Healthcare</p>
+        </div>
+        <div class="glass">
+            <i class="fas fa-globe"></i>
+            <h3>2500+</h3>
+            <p>Remote Patient Monitoring</p>
+        </div>
+        <div class="glass">
+            <i class="fas fa-dna"></i>
+            <h3>425+</h3>
+            <p>Health Equity</p>
+        </div>
+        <div class="glass">
+            <i class="fas fa-stethoscope"></i>
+            <h3>700+</h3>
+            <p>Wellness Promotion</p>
+        </div>
+    </section>
+
+    
+
+
+    <section class="services" id="services">
+        <h1 class="heading">Services & <span>Features</span></h1>
+        <div class="box-container">
+            <div class="glass-box">
+                <i class="fas fa-clover"></i>
+                <h3>Prognocast</h3>
+                <p>Multiple Disease Predictor Tool Based on Acute Health Symptoms using Machine Learning.</p>
+                <a href="#reports" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-camera"></i>
+                <h3>Arogyascan</h3>
+                <p>Detect the chance of Ailments with Imaging Diagnostic Scans and Medical Lab Test Reports.</p>
+                <a href="#scans" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-user-nurse"></i>
+                <h3>Predimed</h3>
+                <p>Streamlit Hosted Predictor of Disease using Most Accurate ML Algorithm and Data Visualization.</p>
+                <a href="https://predimed.streamlit.app/" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-square-plus"></i>
+                <h3>Detectify</h3>
+                <p>AI Supported Detector of Diseases using Deep Learning Techniques and Neural Networks.</p>
+                <a href="https://detectify.streamlit.app/" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Remedict</h3>
+                <p>Complete Evaluation Metrics with Graphical Analytics for Disease Prediction from Datasets.</p>
+                <a href="#review" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div> 
+            <div class="glass-box">
+                <i class="fas fa-robot"></i>
+                <h3>ChikitsaBot</h3>
+                <p>Our Disease Prediction Chatbot empowers Health Forecasts and guides for Proactive Measures.</p>
+                <a href="{{url_for('ML')}}" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-comment-medical"></i>
+                <h3>Healthmate</h3>
+                <p>Telemedicine Support Chatbot with Simplified User Interface and Instant Message Response.</p>
+                <a href="#home" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-comment-dots"></i>
+                <h3>Mentihelp</h3>
+                <p>Get Mental Health Counselling and Advice to overcome depression with AI Trained Chatbot.</p>
+                <a href="{{url_for('prediction_form')}}" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-spa"></i>
+                <h3>Vitachat</h3>
+                <p>Real Time Botpress Integrated Sustainenace Chatbot for Instant Dealing Medical Emergencies.</p>
+                <a href="{{url_for('disease_predict')}}" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-suitcase-medical"></i>
+                <h3>Diagnosight</h3>
+                <p>Pre Diagnosing Healthbot with Google Gemini API Based Chatting and AI generated Response.</p>
+                <a href="{{url_for('gemini_chat')}}" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-user-doctor"></i>
+                <h3>Medisphere</h3>
+                <p>Message our Team of Licensed Doctors across all Specialities to get Personalized Medical Advice.</p>
+                <a href="#doctors" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>     
+            <div class="glass-box">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Physicord</h3>
+                <p>Search for in-network Doctors and Schedule Virtual Appointments on particular Date and Time.</p>
+                <a href="{{url_for('book_appointment')}}" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>   
+            <div class="glass-box">
+                <i class="fas fa-video"></i>
+                <h3>Documeet</h3>
+                <p>Get access to Consultation from Doctors with 1 : 1 Video Conferencing and Prescribing of Medicine.</p>
+                <a href="{{url_for('videocall')}}" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-file-prescription"></i>
+                <h3>Prescriptor</h3>
+                <p>Get Medicine Prescribed Digital Voiced Prescription Leaflet from Experienced Practitioners.</p>
+                <a href="" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>     
+            <div class="glass-box">
+                <i class="fas fa-hospital-user"></i>
+                <h3>Consultiva</h3>
+                <p>Interact with specialized doctors during the medical urgencies with the personal chatting interface.</p>
+                <a href="{{url_for('consultiva')}}" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-hospital"></i>
+                <h3>Curatrack</h3>
+                <p>Nearby Live Hospital and Nursing Home Tracking System using Google Maps API Locator</p>
+                <a href="{{url_for('nearest_hospital')}}" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-truck-medical"></i>
+                <h3>Rescuvan</h3>
+                <p>Centralized 24/7 Ambulance SOS Service for Urgent Medical Crisis whenever Needed</p>
+                <a href="https://excise.wb.gov.in/CHMS/Public/Page/CHMS_Public_MIS_Ambulance.aspx" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-bed-pulse"></i>
+                <h3>Bedcline</h3>
+                <p>Easy access to Check Virtual Bed Availability Status for the Remote Site Medical Admissions</p>
+                <a href="https://excise.wb.gov.in/CHMS/Public/Page/CHMS_Public_Hospital_Bed_Availability.aspx" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-droplet"></i>
+                <h3>Bloodfront</h3>
+                <p>Unified Network of Blood Banks across the Country for the Complimentary Transfusions.</p>
+                <a href="https://www.eraktkosh.in/BLDAHIMS/bloodbank/transactions/bbpublicindex.html" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-staff-snake"></i>
+                <h3>Organifier</h3>
+                <p>Comprehensive Organ Donation Portal for the sake of handling Critical Body Failure Cases.</p>
+                <a href="https://notto.abdm.gov.in/" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-money-check-dollar"></i>
+                <h3>Swiftpay</h3>
+                <p>Convenient Consultation Fee and Hospital Bill Payment through the Instamojo Gateway.</p>
+                <a href="https://payments-test.cashfree.com/links/l6feno100ng0" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Wellviewer</h3>
+                <p>Smart Health Tracker Application for Continous Monitoring of Metabolic Status with Graphical Interface</p>
+                <a href="{{url_for('health_tracker')}}" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-dove"></i>
+                <h3>Pulsepanel</h3>
+                <p>Multiple Health Parameter Checker & Record Management through Manual Medical Value Input.</p>
+                <a href="#review" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fa-brands fa-blogger"></i>
+                <h3>Blogverse</h3>
+                <p>Read our regularly updated Blogs on Critical Cases with Health Tips and Wellness Advice.</p>
+                <a href="#blogs" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-notes-medical"></i>
+                <h3>Reportifier</h3>
+                <p>Spontaneous Report Generation and Storage in PDF Format with Health Details of the Patient.</p>
+                <a href="#review" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-book-open-reader"></i>
+                <h3>Novabase</h3>
+                <p>Centralized Medical Dashboard with separate Patient, Doctor and Admin Panels with Progress Statistics.</p>
+                <a href="#review" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-sack-dollar"></i>
+                <h3>Remipro</h3>
+                <p>Explore options to Upgrade Plans for Premium Users to enjoy enhanced Medical Features and Benefits.</p>
+                <a href="#review" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-pills"></i>
+                <h3>Recominac</h3>
+                <p>Self Medical Drug Recommendation Setup for Alternate Medication and purchase through Pharmeasy.</p>
+                <a href="https://recominac.streamlit.app/" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div> 
+            <div class="glass-box">
+                <i class="fas fa-file-medical"></i>
+                <h3>Pharmascore</h3>
+                <p>Online Medicine Quality Review Analyser with Side Effect Classifier before Personal Drug Intake.</p>
+                <a href="https://pharmascore.streamlit.app/" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-briefcase-medical"></i>
+                <h3>Criticare</h3>
+                <p>Simplified Review and Complaint Submission System with the help of integrated Google Form.</p>
+                <a href="https://e0q3whoglw1.typeform.com/to/u0BUK2VB" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>         
+            <div class="glass-box">
+                <i class="fas fa-users"></i>
+                <h3>Revufinder</h3>
+                <p>Hear the geunine Feedbacks from Patients regarding the Medical Advantages of our Website.</p>
+                <a href="#review" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-envelope"></i>
+                <h3>Sevamitra</h3>
+                <p>Supportive and Individual Guide for Post Treatment Care to Check the Progress of Improvement.</p>
+                <a href="#review" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-earth-asia"></i>
+                <h3>Oxytrust</h3>
+                <p>Hear the geunine Feedbacks from Patients regarding the Medical Advantages of our Website.</p>
+                <a href="https://oxygenforindia.org/" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-shield-heart"></i>
+                <h3>Ciphersafe</h3>
+                <p>Hear the geunine Feedbacks from Patients regarding the Medical Advantages of our Website.</p>
+                <a href="{{url_for('policy')}}" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-shield-virus"></i>
+                <h3>Covisolve</h3>
+                <p>Covid 19 Awareness Website with Necessary Emergency Facilities and Live Case Tracker using API.</p>
+                <a href="https://covisolve.netlify.app/" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-universal-access"></i>
+                <h3>Healsync</h3>
+                <p>Hear the geunine Feedbacks from Patients regarding the Medical Advantages of our Website.</p>
+                <a href="#review" class="btn"> Know More <span class="fas fa-chevron-right"></span></a>
+            </div>
+            
+            
+            
+            
+            
+
+            <!-- <div class="glass-box">
+                <i class="fas fa-clipboard-user"></i>
+                <h3>Physicord</h3>
+                <p>Connecting Patients and Physicians through a Personalized Dashboard for better Access to facilities.</p>
+                <a href="" class="btn"> learn more <span class="fas fa-chevron-right"></span></a>
+            </div> -->
+
+           
+            
+            
+            <!-- <div class="glass-box">
+                <i class="fas fa-file-medical"></i>
+                <h3>Reportifier</h3>
+                <p>Spontaneous Report Generation and Sending in PDF Format with the Health Details of the Patient</p>
+                <a href="" class="btn"> learn more <span class="fas fa-chevron-right"></span></a>
+            </div> -->
+            
+            
+            
+            
+            
+            <!-- <div class="glass-box">
+                <i class="fas fa-cart-shopping"></i>
+                <h3>Prosynergy</h3>
+                <p>Explore options to Upgrade Plans for Premium Users to enjoy enhanced Features and Benefits.</p>
+                <a href="" class="btn"> learn more <span class="fas fa-chevron-right"></span></a>
+            </div> -->
+            
+            
+            <!-- <div class="glass-box">
+                <i class="fas fa-temperature-arrow-up"></i>
+                <h3>Sehatsthiti</h3>
+                <p>Supportive and Individual Guide for Post Treatment Care to Check the Improvement Progress.</p>
+                <a href="#assistance" class="btn"> learn more <span class="fas fa-chevron-right"></span></a>
+            </div> -->
+            
+            <!-- <div class="glass-box">
+                <i class="fas fa-hand-dots"></i>
+                <h3>Fittyfast</h3>
+                <p>Complete Fitness Monitoring Space having BMI and Calorie Calculator with Yoga + Exercise Guide.</p>
+                <a href="https://fittyfast.netlify.app/" class="btn"> learn more <span class="fas fa-chevron-right"></span></a>
+            </div> -->
+
+            <!-- <div class="glass-box">
+                <i class="fas fa-file-medical"></i>
+                <h3>Dermagenics</h3>
+                <p>AI Powered Dermatological Care Tool that harnesses the power of Image Processing Detection.</p>
+                <a href="https://dermagenics.streamlit.app/" class="btn"> learn more <span class="fas fa-chevron-right"></span></a>
+            </div> -->
+
+        </div>
+    </section>
+
+    <section class="doctors" id="doctors">
+        <h1 class="heading">
+            Our <span> Doctors</span>
+        </h1>
+        <div class="box-container">
+            <div class="carousel owl-carousel">
+                <div class="glass-box" style="height: 46rem;">
+                    <center><img src="../static/images/img-1.png" alt="" style="height: 25rem; width: 25rem;"></center>
+                    <h3>Dr. Kunal Sarkar</h3>
+                    <span>Cardiologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-2.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+                    <h3>Dr. Smartya Pulai</h3>
+                    <span>Nephrologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-3.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Asim Ghosh</h3>
+                    <span>Opthalmologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-4.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Indranil Saha</h3>
+                    <span>Gynaecologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-5.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Suddhaswatta Sen</h3>
+                    <span>Gastroenterologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-6.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Kaushik Lahiri</h3>
+                    <span>Dermatologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-7.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Apurba Ghosh</h3>
+                    <span>Paeditrician</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-8.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Bikash Singha</h3>
+                    <span>Orthopedic Surgeon</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-9.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Tushan Kanti Ghosh</h3>
+                    <span>Otolaryngologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-10.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Yogiraj Ray</h3>
+                    <span>Infectious Disease Specialist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-11.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Suvashri Manna</h3>
+                    <span>Dentist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-12.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Narayan Banerjee</h3>
+                    <span>General Physician</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-13.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Subir Sarkar</h3>
+                    <span>Endocrinologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-14.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Saibal Moitra</h3>
+                    <span>Immunologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-15.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Diptendra Sarkar</h3>
+                    <span>Oncologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-16.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Sibabrata Banerjee</h3>
+                    <span>Internal Medicine Specialist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-17.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Arijit Dutta</h3>
+                    <span>Psychiatrist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-18.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Avik Bhattacharyya</h3>
+                    <span>Radiologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-19.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Archana Sinha</h3>
+                    <span>Neonatologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-20.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Sayan Chakraborty</h3>
+                    <span>Neurologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-21.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Abhijit Chowdhury</h3>
+                    <span>Hepatologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-22.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Anshuman Mukherjee</h3>
+                    <span>Pulmonologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-23.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Bhabatosh Biswas</h3>
+                    <span>Cardiothoracic Surgeon</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-24.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Debashish Roy</h3>
+                    <span>General Surgery</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-25.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Amitabha Saha</h3>
+                    <span>Critical Care Specialist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-26.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Dibyendu Kumar Roy</h3>
+                    <span>Neurosurgeon</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-27.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Kaushik Mazumdar</h3>
+                    <span>Geriatrician</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-28.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Prattyay Ghosh</h3>
+                    <span>Diabetologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-29.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Sujit Kumar Sinha</h3>
+                    <span>Urologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-30.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Sujoy Mukherjee</h3>
+                    <span>Oral and Maxillofacial Surgeon</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-31.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Sukumar Mukherjee</h3>
+                    <span>Rheumatologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="glass-box" style="height: 46rem;">
+                    <center>
+                    <img src="../static/images/img-32.png" alt="" style="height: 25rem; width: 25rem;">
+
+                    </center>
+
+                    <h3>Dr. Sushruta Sen</h3>
+                    <span>Pathologist</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+
+        </div>
+    </section>
+
+    
+
+    <section class="blogs" id="book">
+        <h1 class="heading">Book <span>Appointment</span></h1>
+        <center><a class="btn" href="{{ url_for('book_appointment') }}">Schedule Appointment</a></center>
+    </section>
+
+    <section class="services" id="scans">
+        <h1 class="heading">Detection<span> from Scans</span></h1>
+        <div class="box-container">
+            <div class="glass-box">
+                <i class="fas fa-lungs"></i>
+                <h3>Pneumonia</h3>
+                <p>Pneumonia is an inflammatory lung infection often caused by bacteria or viruses, leading to cough, fever, and difficulty in breathing.</p>
+                <a href="{{url_for('pneumonia')}}" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-brain"></i>
+                <h3>Brain Tumor</h3>
+                <p>Brain tumors are abnormal growths in the brain. Symptoms vary, and treatment may involve surgery, radiation, or
+                chemotherapy.</p>
+                <a href="{{url_for('braintumor')}}" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-biohazard"></i>
+                <h3>Alzheimer</h3>
+                <p>Alzheimer is neurodegenerative disease affecting memory, thinking, behavior. It has no particular cure and research seeks prevention.</p>
+                <a href="{{url_for('alzheimer')}}" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-eye"></i>
+                <h3>Eye Disease</h3>
+                <p>Cataract, Diabetic Retinopathy and Glaucoma are clouding of  eye's lens, causing blurry vision. Surgery replaces clouded lens
+                for clarity.</p>
+                <a href="{{url_for('eye')}}" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-virus-covid"></i>
+                <h3>Covid 19 Virus</h3>
+                <p>COVID-19 is a pandemic caused by SARS-CoV-2 virus. Spreads through respiratory droplets, causing flu-like symptoms with severe illness.</p>
+                <a href="{{url_for('covid19')}}" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-mosquito-net"></i>
+                <h3>Malaria Fever</h3>
+                <p>Malaria is life-threatening disease transmitted by infected mosquitoes. Symptoms include fever, chills, and flu like prolonged illness.</p>
+                <a href="{{url_for('malaria')}}" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-hand-dots"></i>
+                <h3>Skin Cancer</h3>
+                <p>
+                    Skin cancer is a condition where abnormal cell growth occurs in the skin, often caused by UV radiation exposure require timely vigilance.</p>
+                <a href="{{url_for('skin_cancer')}}" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-head-side-cough"></i>
+                <h3>Tuberculosis</h3>
+                <p>Tuberculosis is contagious disease primarily affecting the lungs that require prolonged treatment with antibiotics and other treatments.</p>
+                <a href="{{url_for('tuberculosis')}}" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <section class="services" id="reports">
+        <h1 class="heading">Predictions<span> from Reports</span></h1>
+        <div class="box-container">
+
+            <div class="glass-box">
+                <i class="fas fa-disease"></i>
+                <h3>Multiple Disease</h3>
+                <p>Disease prediction using ML involves analyzing medical data to forecast the likelihood of a specific
+                ailment, enabling early intervention.</p>
+                <a href="{{url_for('disease_predict')}}" class="btn"> Explore <span
+                        class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-skull"></i>
+                <h3>Parkinson Disease</h3>
+                <p>Parkinson's disease is a progressive nervous system disorder, causing tremors, impaired movement due to dopamine deficiency in brain.</p>
+                <a href="" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-heart"></i>
+                <h3>Heart Disease</h3>
+                <p>Cardiovascular disease involves conditions affecting the heart and blood vessels, such as heart attack, strokes influenced by lifestyle.</p>
+                <a href="{{url_for('heart_disease')}}" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-lungs-virus"></i>
+                <h3>Lung Cancer</h3>
+                <p>Lung cancer is a malignant lung tumor, often caused by smoking. Symptoms include coughing, chest pain, and difficulty
+                    breathing.</p>
+                <a href="{{url_for('lung_cancer')}}" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-ribbon"></i>
+                <h3>Breast Cancer</h3>
+                <p>Breast cancer is the malignancy affecting breast tissue detected by lumps, causing pain that require surgery and chemotherapy.</p>
+                <a href="" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-bacteria"></i>
+                <h3>Liver Disease</h3>
+                <p>Liver disease encompasses a range of conditions like cirrhosis, fatty liver leading to impaired function and life-threatening complications.</p>
+                <a href="" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-virus"></i>
+                <h3>Hepatitis Disease</h3>
+                <p>Hepatitis is inflammation of the liver, caused by viral infections, alcohol abuse, or autoimmune disorders, leading to liver dysfunctions.</p>
+                <a href="" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>          
+            <div class="glass-box">
+                <i class="fas fa-hands-holding-circle"></i>
+                <h3>Diabetes Disease</h3>
+                <p>Diabetes is the chronic condition characterized by high blood sugar levels due to insufficient insulin production or resistance.</p>
+                <a href="" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>            
+            <div class="glass-box">
+                <i class="fas fa-flask-vial"></i>
+                <h3>Kidney Disease</h3>
+                <p>Chronic Kidney Disease is a serious condition impairing kidney function leading to complications like high blood pressure and kidney fault.</p>
+                <a href="" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-temperature-arrow-up"></i>
+                <h3>Thyroid Disease</h3>
+                <p>Thyroid disease affects the thyroid gland's function, causing imbalance in the hormone production, body functions and metabolism.</p>
+                <a href="" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>                     
+            </div>         
+            <div class="glass-box">
+                <i class="fas fa-circle-radiation"></i>
+                <h3>Prostate Cancer</h3>
+                <p>Prostate Cancer is a malignancy affecting the prostate gland which is common in men, with symptoms of urinary disorder and tumour.</p>
+                <a href="" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-hand-holding-droplet"></i>
+                <h3>Blood Cancer</h3>
+                <p>Blood Cancer is a condition that is related by abnormal production of blood cells, leading to symptoms like fatigue and bruising.</p>
+                <a href="" class="btn"> Explore <span class="fas fa-chevron-right"></span></a>
+            </div>
+            
+
+        </div>
+    </section>
+
+<!-- review section starts  -->
+
+<section class="review" id="review">
+    
+    <h1 class="heading"> Hear to <span>our Patients</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="../static/images/pic-1.png" alt="">
+            <h3>Debanjan Adhikary</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="text">I cannot express enough gratitude for Remisense! As a busy professional, finding time for doctor's appointments was always a struggle. Remisense changed the game for me. The platform is user-friendly, and I was able to schedule a consultation with a specialist in minutes. The doctor was incredibly knowledgeable and attentive, and I received my prescription promptly. Telesuraksha truly offers a lifeline in the digital age, and I highly recommend it to anyone seeking convenient and efficient healthcare.</p>
+        </div>
+
+        <div class="box">
+            <img src="../static/images/pic-2.png" alt="">
+            <h3>Chandan Sengupta</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="text">Remisense is nothing short of revolutionary! I've had chronic health issues for years, and managing doctor's visits was exhausting. The platform's interface is user friendly and intuitive, and I can consult with specialists from the comfort of my home. The doctors are top-notch, providing thorough examinations and tailored treatment plans. The convenience of online follow-ups and prescription delivery has been a game-changer. I couldn't be happier with the care and support I've received.</p>
+        </div>
+
+        <div class="box">
+            <img src="../static/images/pic-3.png" alt="">
+            <h3>Sonali Banerjee</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="text">Remisense has been a game-changer for my family's health. With a toddler and a demanding job, going to the doctor's office was always a hassle. Remisense made it so much easier! I've used their service for pediatric consultations, and the doctors have been fantastic. They are patient, understanding, and genuinely care about our child's well-being. Plus, the follow-up appointments and prescription refills are a breeze. Remisense has made healthcare accessible and stress-free for my family, and I'm extremely grateful.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- review section ends -->
+
+
+    <section class="blogs" id="blogs">
+        <h1 class="heading">Our <span>Blogs</span></h1>
+        <div class="box-container">
+            <div class="glass-box">
+                <div class="image">
+                    <img src="../static/images/online-doctor-animate.svg"
+                        alt="">
+                </div>
+                <div class="content">
+                    <div class="icon">
+                        <a href="" class="disabled"><i class="fas fa-calendar"></i> 05th Mar, 2024</a>
+                        <a href="{{url_for('admin')}}"><i class="fas fa-user"></i> by Admin</a>
+
+                    </div>
+                    <h3>Transforming Healthcare</h3>
+                    <p>Transforming Healthcare: The Human Touch of AI and Telemedicine.</p>
+                    <a href="{{url_for('Transforming_Healthcare')}}" class="btn">Read More <span
+                            class="fas fa-chevron-right"></span></a>
+                </div>
+            </div>
+            <div class="glass-box">
+                <div class="image">
+                    <img src="../static/images/diabetes-animate.svg" alt="">
+                </div>
+                <div class="content">
+                    <div class="icon">
+                        <a href="" class="disabled"><i class="fas fa-calendar"></i> 08th Mar, 2024</a>
+                        <a href="{{url_for('admin')}}"><i class="fas fa-user"></i> by Admin</a>
+
+                    </div>
+                    <h3>Comprehensive Guide to Health</h3>
+                    <p>A Comprehensive Guide to Holistic Health: Nurturing Your Mind and Body.</p>
+                    <a href="{{url_for('Holistic_Health')}}" class="btn">Read More <span
+                            class="fas fa-chevron-right"></span></a>
+                </div>
+            </div>
+            <div class="glass-box">
+                <div class="image">
+                    <img src="../static/images/cardiologist-animate.svg"
+                        alt="">
+                </div>
+                <div class="content">
+                    <div class="icon">
+                        <a href="" class="disabled"><i class="fas fa-calendar"></i> 11th Mar, 2024</a>
+                        <a href="{{url_for('admin')}}"><i class="fas fa-user"></i> by Admin</a>
+
+                    </div>
+                    <h3>The Power of a Healthy Diet</h3>
+                    <p>"Nourishing Your Body: The Power of a Healthy Diet to keep body fit and fine</p>
+                    <a href="{{url_for('Nourishing_Body')}}" class="btn">Read More <span
+                            class="fas fa-chevron-right"></span></a>
+                </div>
+            </div>
+            <div class="glass-box">
+                <div class="image">
+                    <img src="../static/images/medical-prescription-animate.svg"
+                        alt="">
+                </div>
+                <div class="content">
+                    <div class="icon">
+                        <a href="" class="disabled"><i class="fas fa-calendar"></i> 14th Mar, 2024</a>
+                        <a href="{{url_for('admin')}}"><i class="fas fa-user"></i> by Admin</a>
+
+                    </div>
+                    <h3>The Importance of Games</h3>
+                    <p>The Importance of Games in Maintaining Physical and Mental Health</p>
+                    <a href="{{url_for('Importance_of_Games')}}" class="btn">Read More <span
+                            class="fas fa-chevron-right"></span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="services" id="upgrade">
+        <h1 class="heading">Upgrade to<span> Remipro</span></h1>
+        <div class="box-container ">
+
+            <div class="glass-box">
+                <i class="fas fa-feather-pointed" ></i>
+                <h3>Basic Plan</h3>
+                <p class="price" style="color: #16a085; font-weight: bold; font-size: 2.0rem">Rs 99/Month</p>
+                <p>Get 2 Premium Consultation</p>
+                <p>Rs 39 for Each Consultation</p>
+                <p>24/7 Patient Health Support</p>
+                <a href="https://rzp.io/i/PtWZn1cel" class="btn"> Upgrade <span
+                        class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-coins"></i>
+                <h3>Gold Plan</h3>
+                <p class="price" style="color: #16a085; font-weight: bold; font-size: 2.0rem">Rs 299/Month</p>
+                <p>Get 6 Premium Consultation</p>
+                <p>Rs 59 for Each Consultation</p>
+                <p>24/7 Patient Health Support</p>
+                <a href="https://rzp.io/i/6NaetHMg" class="btn"> Upgrade <span
+                        class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-gem"></i>
+                <h3>Diamond Plan</h3>
+                <p class="price" style="color: #16a085; font-weight: bold; font-size: 2.0rem">Rs 499/Month</p>
+                <p>Get 10 Premium Consultation</p>
+                <p>Rs 79 for Each Consultation</p>
+                <p>24/7 Patient Health Support</p>
+                <a href="https://rzp.io/i/E2t4nJLAvD" class="btn"> Upgrade <span
+                        class="fas fa-chevron-right"></span></a>
+            </div>
+            <div class="glass-box">
+                <i class="fas fa-star"></i>
+                <h3>Platinum Plan</h3>
+                <p class="price" style="color: #16a085; font-weight: bold; font-size: 2.0rem">Rs 699/Month</p>
+                <p>Get 20 Premium Consultation</p>
+                <p>Rs 99 for Each Consultation</p>
+                <p>24/7 Patient Health Support</p>
+                <a href="https://rzp.io/i/q3acQWV" class="btn"> Upgrade <span
+                        class="fas fa-chevron-right"></span></a>
+            </div>
+
+        
+        </div>
+    </section>
+
+    
+
+    <section class="about" id="about">
+        <h1 class="heading" style="padding-top :30px">About <span> Us </span></h1>
+        <div class="row">
+            <div class="image">
+                <img src="../static/images/hospital-bed-animate.svg" alt="">
+
+            </div>
+            <div class="content">
+                <h3>We take Care of your Healthy Life for your complete Wellness</h3>
+                <p>We are a Group of Four Undergrad Student of TMSL, Kolkata, West Bengal, India.</p>
+                <p>Still learning and have a great interest in developing and integrating different types of
+                    Technologies. Worked with various Tech stacks and participated in numerous Events, Hackathons and
+                    Competitions and the count will never stop in future. <br> Want to know more about us ? Click below to explore the details:
+                </p>
+                <a href="{{url_for('admin')}}" class="btn">Know More <i class="fas fa-chevron-right"></i></a><br>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- contact section -->
+  <section class="contact_section layout_padding-bottom" id="assistance">
+    <div class="container">
+        <h1 class="heading" style="padding :0" >Further Assistance? <span> Get in Touch </span></h1>
+      </div>
+      <div class="row">
+        <div class="col-md-7">
+          <div class="form_container">
+            <form action="https://script.google.com/macros/s/AKfycbyfCSAqHl6g1gK1gIwhtNcNZE9oxyAzR-X2fuT_od95PK4JhYly4wNOSLlYbR4dZL11/exec">
+              <div>
+                <input type="text" name="Patient Name" placeholder="Patient Name" />
+              </div>
+              <div>
+                <input type="email" name="Email Id" placeholder="Email Id" />
+              </div>
+              <div>
+                <input type="text" name="Contact Number" placeholder="Contact Number" />
+              </div>
+              <div>
+                <input type="text" name="Message" class="message-box" placeholder="Message" />
+              </div>
+              <div class="btn_box">
+                <button>
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="img-box">
+            <img src="../static/images/doctors-animate.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+  <section class="footer">
+    <div class="box-container">
+        <div class="box" style="margin-left:40px">
+            <h3>Quick Links</h3>
+            <a href="{{url_for('index')}}#home"><i class="fas fa-chevron-right"></i>Home</a>
+            <a href="{{url_for('index')}}#services"><i class="fas fa-chevron-right"></i>Services</a>
+            <a href="{{url_for('index')}}#book"><i class="fas fa-chevron-right"></i>Book</a>
+            <a href="{{url_for('index')}}#scans"><i class="fas fa-chevron-right"></i>Scans</a>
+            <a href="{{url_for('index')}}#blogs"><i class="fas fa-chevron-right"></i>Blogs</a>
+            <a href="{{url_for('index')}}#about"><i class="fas fa-chevron-right"></i>About</a>
+        </div>
+        <div class="box" style="margin-left:50px">
+            <h3>Our Services </h3>
+            <a href="https://predimed.streamlit.app/"><i class="fas fa-chevron-right"></i> Predimed</a>
+            <a href="{{url_for('videocall')}}"><i class="fas fa-chevron-right"></i> Documeet</a>
+            <a href="{{url_for('ML')}}"><i class="fas fa-chevron-right"></i> ChikitsaBot</a>
+            <a href="https://recominac.streamlit.app/"><i class="fas fa-chevron-right"></i> Recominac</a>
+            <a href="{{url_for('prediction_form')}}"><i class="fas fa-chevron-right"></i> Mentihelp</a>
+            <a href="{{url_for('nearest_hospital')}}"><i class="fas fa-chevron-right"></i> Curatrack</a>
+
+
+        </div>
+        <div class="box" style="margin-left:60px">
+            <h3>Contact Info</h3>
+            <a href="tel:1800 450 5555" class="phone-btn"><i class="fas fa-phone"></i>+91 1800 450 5555</a>
+            <a href="sms:8245614231" class="sms-btn"><i class="fas fa-sms"></i>+91 8697408311</a>
+            <a href="https://wa.me/6284654278" class="whatsapp-btn"><i class="fab fa-whatsapp"></i>+91 6291737719</a>
+            <a href="mailto:remisense2024@gmail.com"><i class="fas fa-envelope"></i>remisense2024@gmail.com</a>
+            <a href="mailto:tmslproject2024@gmail.com"><i class="fas fa-fax"></i>tmslproject2024@gmail.com</a>
+            <a href="https://maps.app.goo.gl/9P5eRuXpVDFkAiJs5" class="disabled"><i class="fas fa-map-marker-alt"></i>Kolkata, West Bengal, India</a>
+        </div>
+        <div class="box" style="margin-left:140px">
+            <h3>Follow Us</h3>
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i>Facebook</a>
+            <a href="https://www.linkedin.com/in/"><i class="fab fa-linkedin"></i>Linkedin</a>
+            <a href="https://www.instagram.com"><i class="fab fa-instagram"></i>Instagram</a>
+            <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i>Youtube</a>
+            <a href="https://telegram.org/"><i class="fab fa-telegram"></i>Telegram</a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i>Twitter</a>
+        </div>
+    </div>
+
+    <div class="credit">Made With 💚 | Remisense @ 2024</div>
+</section>
+    <script src="./static/js/script.js"></script>
+    <script>
+        $('.carousel').owlCarousel({
+            margin: 20,
+            loop: true,
+            autoplay: true,
+            autoplayTimeOut: 2000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                600: {
+                    items: 2,
+                    nav: false
+                },
+                1000: {
+                    items: 4,
+                    nav: false
+                }
+            }
+        });
+    </script>
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger 
+intent="Welcome" 
+chat-title="Healthmate" 
+agent-id="86dc2bd7-9c31-498b-9eb0-6de8cb6813a6"
+language-code="en" 
+chat-icon="https://www.pngall.com/wp-content/uploads/15/ChatGPT-Logo-PNG-File.png"
+style="width: 300px; height: 400px;"></df-messenger>
+
+    <style>
+        df-messenger {
+         --df-messenger-bot-message: #9c540b;
+         --df-messenger-button-titlebar-color: #9c540b;
+         --df-messenger-chat-background-color: #fafafa;
+         --df-messenger-font-color: white;
+         --df-messenger-send-icon: #9c540b;
+         --df-messenger-user-message: var(--green);
+         --width: 300px; 
+         --height: 100px; 
+        }
+      </style>
+      
+
+</body>
+
+</html>

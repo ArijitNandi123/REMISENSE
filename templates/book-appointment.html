@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Remisense</title>
+    <link rel="icon" href="./static/images/house-medical-solid.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./static/css/style.css">
+    <style>
+        label {
+            color: rgb(10, 10, 10);
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="{{url_for('index')}}" class="logo"><i class="fas fa-house-medical"></i> Remisense</a>
+        <nav class="navbar">
+            {% if username %}
+            <a href="{{url_for('index')}}#home">Home</a>
+            <a href="{{url_for('index')}}#services">services</a>
+            <a href="{{url_for('index')}}#book">Book</a>
+            <a href="{{url_for('index')}}#scans">Scans</a>
+            <a href="{{url_for('index')}}#blogs">Blogs</a>
+            <a href="{{url_for('index')}}#about">about</a>
+            <a href="{{url_for('profile')}}"><span class="fas fa-user"></span></a>
+            {% else %}
+            <a href="{{url_for('login')}}">Login</a>
+            {% endif %}
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+    </header>
+    <section class="book" id="book">
+        <h1 class="heading" style="margin-top: 8rem;"> <span>Book</span> Appointment</h1>
+        <div class="glass-row" style="margin-top:40px;">
+            <form action="{{ url_for('book_appointment') }}" method="post">
+                <a href="{{url_for('index')}}" class="logo"><i class="fas fa-heartbeat"></i> Remisense</a><br><br>
+                <label for="name">Enter your name:</label>
+                <input type="text" placeholder="Patient Name" class="box" id="Name" name="name" required>
+                <label for="name">Enter your Age:</label>
+                <input placeholder="Age" class="box" id="Age" type="number" name="age" required min="15" max="75">
+                <label for="name">Enter your Blood Group:</label>
+                <input placeholder="Blood group" class="box" id="Blood group" type="text" name="blood_group" required>
+                <label for="name">Select Preferred time slot :</label>
+                <select name="time_slot" required>
+                    <option value="Morning">Morning (8AM-11AM)</option>
+                    <option value="Afternoon">Afternoon (1PM-4PM)</option>
+                    <option value="Evening">Evening (5PM-8PM)</option>
+                </select><br><br>
+                <label for="name">Enter your Phone Number:</label>
+                <input placeholder="Phone Number" class="box" id="Phone Number" type="number" name="phone_number" required>
+                <label for="name">Enter your Email:</label>
+                <input placeholder="Email" class="box" id="Email" type="email" name="email" required>
+                <label for="name">Select type of doctor :</label>
+                <select name="type_of_doctor" required>
+                    {% for doctor_type in doctor_types %}
+                    <div class="select_option">
+                        <option value="Cardiologist">Cardiologist</option>
+                        <option value="Nephrologist">Nephrologist</option>
+                        <option value="Opthalmologist">Opthalmologist</option>
+                        <option value="Gynaecologist">Gynaecologist</option>
+                        <option value="Gastroenterologist">Gastroenterologist</option>
+                        <option value="Dermatologist">Dermatologist</option>
+                        <option value="Paeditrician">Paeditrician</option>
+                        <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+                        <option value="Otolaryngologist">Otolaryngologist</option>
+                        <option value="Infectious Disease Specialist">Infectious Disease Specialist</option>
+                        <option value="Dentist">Dentist</option>
+                        <option value="General Physician">General Physician</option>
+                        <option value="Immunologist">Immunologist</option>
+                        <option value="Endocrinologist">Endocrinologist</option>
+                        <option value="Oncologist">Oncologist</option>
+                        <option value="Internal Medicine Specialist">Internal Medicine Specialist</option>
+                        <option value="Psychiatrist">Psychiatrist</option>
+                        <option value="Radiologist">Radiologist</option>
+                        <option value="Neonatologist">Neonatologist</option>
+                        <option value="Neurologist">Neurologist</option>
+                        
+                        <option value="Hepatologist">Hepatologist</option>
+                        <option value="Pulmonologist">Pulmonologist</option>
+                        <option value="Cardiothoracic Surgeon">Cardiothoracic Surgeon</option>
+                        <option value="General Surgery">General Surgery</option>
+                        <option value="Critical Care Specialist">Critical Care Specialist</option>
+                        <option value="Neurosurgeon">Neurosurgeon</option>
+                        <option value="Geriatrician">Geriatrician</option>
+                        <option value="Diabetologist">Diabetologist</option>
+                        <option value="Urologist">Urologist</option>
+                        <option value="Oral and Maxillofacial Surgeon">Oral and Maxillofacial Surgeon</option>
+                        <option value="Rheumatologist">Rheumatologist</option>
+                        <option value="Pathologist">Pathologist</option>
+                        <option value="None">None</option>
+                    </div>
+                    {% endfor %}
+                </select><br>
+
+                <input type="submit" value="Book" class="btn">
+                <p style="color: rgb(10, 10, 10); font-size: 1.3rem; margin-top: 2rem;">By continuing, you agree to Remisense's <a
+                        style="color: #16a085;" href="{{url_for('policy')}}">Terms of Service</a> Opens a new tab and
+                    acknowledge you've read our Privacy
+                    Policy. Notice at collection.</p>
+            </form>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="box-container">
+            <div class="box" style="margin-left:40px">
+                <h3>Quick Links</h3>
+                <a href="{{url_for('index')}}#home"><i class="fas fa-chevron-right"></i>Home</a>
+                <a href="{{url_for('index')}}#services"><i class="fas fa-chevron-right"></i>Services</a>
+                <a href="{{url_for('index')}}#book"><i class="fas fa-chevron-right"></i>Book</a>
+                <a href="{{url_for('index')}}#scans"><i class="fas fa-chevron-right"></i>Scans</a>
+                <a href="{{url_for('index')}}#blogs"><i class="fas fa-chevron-right"></i>Blogs</a>
+                <a href="{{url_for('index')}}#about"><i class="fas fa-chevron-right"></i>About</a>
+            </div>
+            <div class="box" style="margin-left:50px">
+                <h3>Our Services </h3>
+                <a href="https://predimed.streamlit.app/"><i class="fas fa-chevron-right"></i> Predimed</a>
+                <a href="{{url_for('videocall')}}"><i class="fas fa-chevron-right"></i> Documeet</a>
+                <a href="{{url_for('ML')}}"><i class="fas fa-chevron-right"></i> ChikitsaBot</a>
+                <a href="https://recominac.streamlit.app/"><i class="fas fa-chevron-right"></i> Recominac</a>
+                <a href="{{url_for('prediction_form')}}"><i class="fas fa-chevron-right"></i> Mentihelp</a>
+                <a href="{{url_for('nearest_hospital')}}"><i class="fas fa-chevron-right"></i> Curatrack</a>
+
+
+            </div>
+            <div class="box" style="margin-left:60px">
+                <h3>Contact Info</h3>
+                <a href="tel:1800 450 5555" class="phone-btn"><i class="fas fa-phone"></i>+91 1800 450 5555</a>
+                <a href="sms:8245614231" class="sms-btn"><i class="fas fa-sms"></i>+91 8697408311</a>
+                <a href="https://wa.me/6284654278" class="whatsapp-btn"><i class="fab fa-whatsapp"></i>+91 6291737719</a>
+                <a href="mailto:remisense2024@gmail.com"><i class="fas fa-envelope"></i>remisense2024@gmail.com</a>
+                <a href="mailto:tmslproject2024@gmail.com"><i class="fas fa-fax"></i>tmslproject2024@gmail.com</a>
+                <a href="https://maps.app.goo.gl/9P5eRuXpVDFkAiJs5" class="disabled"><i class="fas fa-map-marker-alt"></i>Kolkata, West Bengal, India</a>
+            </div>
+            <div class="box" style="margin-left:140px">
+                <h3>Follow Us</h3>
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i>Facebook</a>
+                <a href="https://www.linkedin.com/in/"><i class="fab fa-linkedin"></i>Linkedin</a>
+                <a href="https://www.instagram.com"><i class="fab fa-instagram"></i>Instagram</a>
+                <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i>Youtube</a>
+                <a href="https://telegram.org/"><i class="fab fa-telegram"></i>Telegram</a>
+                <a href="https://twitter.com/"><i class="fab fa-twitter"></i>Twitter</a>
+            </div>
+        </div>
+
+        <div class="credit">Made With 💚 | Remisense @ 2024</div>
+    </section>
+    <script src="./static/js/script.js"></script>
+</body>
+
+</html>

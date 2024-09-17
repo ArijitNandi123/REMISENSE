@@ -1,0 +1,168 @@
+
+body {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    background-image: url('../images/bgimg20.png');
+	background-size:cover;
+
+    
+}
+
+
+
+#app {
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+}
+
+input, button {
+    margin: 10px 0;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #16a085;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #16a085;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+span {
+    flex-grow: 1;
+}
+
+button.remove-btn {
+    background-color: #16a085;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+button.remove-btn:hover {
+    background-color: #16a085;
+}
+img{
+    border-radius: 50%;
+   width: 50px;
+   height: 50px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    width: 50px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add some spacing between logo and name */
+}
+
+.logo-container h1 {
+    margin: 0; /* Remove default margin */
+}
+.h2{
+    color: #fff;
+}
+
+.log{
+margin-right: 5px;    
+font-size: 26px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+#userName{
+    color: #16a085;
+}
+    
+.bigboy{
+    position: relative;
+    height: auto;
+    width: 60%;
+    background-color: black;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+}
+.smallboy{
+    position: absolute;
+    left: 26%;
+    background-color: rgba(0, 0, 0, 0.361);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    padding-top: 10px;
+}
+
+#chatbox{
+    background-color: #fff;
+    border-radius: 15px;
+    
+}
+.text{
+    padding-right: 2px;
+    padding-left: 2px; 
+    margin: 0px;
+    padding-top: 12px;
+    padding-bottom:14px;
+    color: #16a085;
+ }
+.x{
+    padding: 5px; 
+   margin: 0px;
+    margin-bottom: 10px;
+    font-weight: lighter;
+}
+
+.header {
+    padding: 2rem 9%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #202041;
+
+}
+

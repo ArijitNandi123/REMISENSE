@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        /* CSS Code */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4; /* Light background color */
+            color: #333; /* Dark text color */
+            padding: 20px;
+            height: 100vh;
+        }
+
+        .dashboard {
+            padding: 20px;
+            height: 100vh;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(20px); /* Add a blur effect */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-card {
+            background-color: #fff; /* White card background color */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .chart-card h2 {
+            margin-bottom: 10px;
+        }
+
+        canvas {
+            width: 100%;
+            height: 200px;
+        }
+
+        /* Light Mode Styles */
+        .light-mode {
+            background-color: #fff; /* White background color */
+            color: #333; /* Dark text color */
+        }
+
+        .light-mode .chart-card {
+            background-color: #fff; /* White card background color */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .light-mode canvas {
+            background-color: #fff; /* White canvas background color */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Welcome to Your Dashboard</h1>
+        <div class="charts-container">
+            <div class="chart-card">
+                <h2>Weight Chart</h2>
+                <canvas id="weightChart"></canvas>
+            </div>
+            
+            <div class="chart-card">
+                <h2>Blood Pressure Chart</h2>
+                <canvas id="bloodPressureChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>Blood Sugar Chart</h2>
+                <canvas id="bloodSugarChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>Exercise Time Chart</h2>
+                <canvas id="exerciseTimeChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>Calories Consumed Chart</h2>
+                <canvas id="caloriesConsumedChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>Sleep Hours Chart</h2>
+                <canvas id="sleepHoursChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>Water Intake Chart</h2>
+                <canvas id="waterIntakeChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>Stress Level Chart</h2>
+                <canvas id="stressLevelChart"></canvas>
+            </div>
+        </div>
+    </div>
+<!-- JavaScript code to handle chart creation and data generation -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const generateMockData = () => {
+            const mockData = [];
+            for (let i = 1; i <= 10; i++) {
+                mockData.push({
+                    timestamp: `Day ${i}`,
+                    weight: Math.floor(Math.random() * (100 - 50 + 1)) + 50, // Random weight between 50 and 100 kg
+                    bloodPressure: [Math.floor(Math.random() * (140 - 90 + 1)) + 90, Math.floor(Math.random() * (90 - 60 + 1)) + 60], // Random systolic/diastolic between 90/60 and 140/90
+                    blood sugar: Math.floor(Math.random() * (200 - 70 + 1)) + 70, // Random blood sugar between 70 and 200 mg/dL
+                    exerciseTime: Math.floor(Math.random() * (120 - 30 + 1)) + 30, // Random exercise time between 30 and 120 minutes
+                    caloriesConsumed: Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000, // Random calories consumed between 1000 and 3000
+                    sleepHours: Math.random() * (9 - 5) + 5, // Random sleep hours between 5 and 9
+                    waterIntake: Math.floor(Math.random() * (4000 - 1000 + 1)) + 1000, // Random water intake between 1000 and 4000 ml
+                    stressLevel: Math.floor(Math.random() * (10 - 1 + 1)) + 1, // Random stress level between 1 and 10
+                });
+            }
+            return mockData;
+        };
+
+        const drawCharts = (userData) => {
+            const labels = userData.map((data) => data.timestamp);
+            const weights = userData.map((data) => data.weight);
+            const bloodPressures = userData.map((data) => data.bloodPressure);
+            const bloodSugars = userData.map((data) => data.bloodSugar);
+            const exerciseTimes = userData.map((data) => data.exerciseTime);
+            const caloriesConsumed = userData.map((data) => data.caloriesConsumed);
+            const sleepHours = userData.map((data) => data.sleepHours);
+            const waterIntake = userData.map((data) => data.waterIntake);
+            const stressLevel = userData.map((data) => data.stressLevel);
+
+            const weightCtx = document.getElementById('weightChart').getContext('2d');
+            new Chart(weightCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Weight (kg)',
+                            data: weights,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            tension: 0.1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+            // Blood pressure chart
+            const bloodPressureCtx = document.getElementById('bloodPressureChart').getContext('2d');
+            new Chart(bloodPressureCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Blood Pressure (systolic)',
+                            data: bloodPressures.map(([systolic, diastolic]) => systolic),
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            tension: 0.1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+            // Blood sugar chart
+            const bloodSugarCtx = document.getElementById('bloodSugarChart').getContext('2d');
+            new Chart(bloodSugarCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Blood Sugar (mg/dL)',
+                            data: bloodSugars,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            tension: 0.1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+            // Exercise time chart
+            const exerciseTimeCtx = document.getElementById('exerciseTimeChart').getContext('2d');
+            new Chart(exerciseTimeCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Exercise Time (minutes)',
+                            data: exerciseTimes,
+                            borderColor: 'rgba(255, 205, 86, 1)',
+                            tension: 0.1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+            // Calories consumed chart
+            const caloriesConsumedCtx = document.getElementById('caloriesConsumedChart').getContext('2d');
+            new Chart(caloriesConsumedCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Calories Consumed',
+                            data: caloriesConsumed,
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            tension: 0.1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+            // Sleep hours chart
+            const sleepHoursCtx = document.getElementById('sleepHoursChart').getContext('2d');
+            new Chart(sleepHoursCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Sleep Hours',
+                            data: sleepHours,
+                            borderColor: 'rgba(255, 159, 64, 1)',
+                            tension: 0.1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+            // Water intake chart
+            const waterIntakeCtx = document.getElementById('waterIntakeChart').getContext('2d');
+            new Chart(waterIntakeCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Water Intake (ml)',
+                            data: waterIntake,
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            tension: 0.1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+            // Stress level chart
+            const stressLevelCtx = document.getElementById('stressLevelChart').getContext('2d');
+            new Chart(stressLevelCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Stress Level',
+                            data: stressLevel,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                                tension: 0.1,
+                            },
+                        ],
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 10, // Adjust the maximum value to 10 since stress levels range from 1 to 10
+                            },
+                        },
+                    },
+                });
+            };
+
+            const userData = generateMockData();
+            drawCharts(userData);
+        });
+    </script>
+</body>
+</html>
+

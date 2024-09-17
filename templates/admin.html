@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Remisense</title>
+    <link rel="icon" href="./static/images/house-medical-solid.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./static/css/style.css">
+    <style>
+        img {
+            height: 40rem;
+            border: var(--border);
+            border-radius: .5rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        img:hover {
+            transform: scale(0.8);
+        }
+    </style>
+
+    
+</head>
+
+<body>
+    <header class="header">
+        <a href="{{url_for('index')}}" class="logo"><i class="fas fa-house-medical"></i> Remisense</a>
+        <nav class="navbar">
+            {% if username %}
+            <a href="{{url_for('index')}}#home">Home</a>
+            <a href="{{url_for('index')}}#services">Services</a>
+            <a href="{{url_for('index')}}#book">Book</a>
+            <a href="{{url_for('index')}}#scans">Scans</a>
+            <a href="{{url_for('index')}}#blogs">Blogs</a>
+            <a href="{{url_for('index')}}#about">About</a>
+            <a href="{{url_for('profile')}}"><span class="fas fa-user"></span></a>
+            {% else %}
+            <a href="{{url_for('login')}}">Login</a>
+            {% endif %}
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+    </header>
+    <section class="doctors" id="doctors">
+        <h1 class="heading" style="margin: 8rem;">
+            Team Members
+        </h1>
+        <div class="box-container">
+            
+            <div class="glass-box" style="height: 61rem; width: 31rem;">
+                <img  src="../static/images/admin1.jpg" alt="" style="height: 30rem; width: 25rem;">
+                <h3>Soumalya Bhattacharyya</h3>
+                <h3>Kolkata, West Bengal</h3>
+                <h3>AIML Lead</h3>
+                <h3>+91 8100664085</h3>
+                <h3> <a href="mailto:soucharya2@gmail.com" style="color: rgb(8, 0, 0);">soucharya2@gmail.com</a>
+                </h3>
+                <div class="share">
+                    <a href="https://www.linkedin.com/in/soumalya-bhattacharyya-b09671228/" class="fab fa-linkedin"></a>
+                    <a href="https://github.com/soumalya1902" class="fab fa-github"></a>
+                    <a href="https://www.instagram.com/mallya_is_mallya/" class="fab fa-instagram"></a>
+                    <a href="https://www.facebook.com/soucharya" class="fab fa-facebook"></a>
+
+                </div>
+                
+            </div>
+
+            <div class="glass-box" style="height: 61rem; width: 31rem;">
+                <img  src="../static/images/arijit.jpeg" alt="" style="height: 30rem; width: 25rem;">
+                <h3>Arijit nandi</h3>
+                <h3>Howrah, West Bengal</h3>
+                <h3>Front End Lead</h3>
+                <h3>+91 9903734596</h3>
+                <h3> <a href="arijitnandi2019@gmail.com" style="color: rgb(8, 0, 0);">arijitnandi2019@gmail.com</a>
+                </h3>
+                <div class="share">
+                    <a href="https://in.linkedin.com/in/arijit-nandi-88ba3520b" class="fab fa-linkedin"></a>
+                    <a href="https://github.com/ArijitNandi123" class="fab fa-github"></a>
+                    <a href="https://www.instagram.com/ari_jit_/" class="fab fa-instagram"></a>
+                    <a href="https://m.facebook.com/arijit.nandi.1466/" class="fab fa-facebook"></a>
+
+                </div>
+                
+            </div>
+
+
+            <div class="glass-box" style="height: 61rem; width: 31rem;" > 
+                <img src="../static/images/admin3.jpeg" alt="" style="height: 30rem; width: 25rem;">
+                <h3>Sayan Pan</h3>
+                <h3>Howrah, West Bengal</h3>
+                <h3>Front End Lead</h3>
+                <h3> +91 8697408311</h3>
+                <h3> <a href="mailto:sayanpan23@gmail.com" style="color: rgb(8, 0, 0);">sayanpan23@gmail.com</a>
+                </h3>
+                <div class="share">
+                    <a href="https://www.linkedin.com/in/sayan-pan-02a518281/" class="fab fa-linkedin"></a>
+                    <a href="https://github.com/sayanpan" class="fab fa-github"></a>
+                    <a href="https://instagram.com/" class="fab fa-instagram"></a>
+                    <a href="https://www.facebook.com/sayan.pan.165" class="fab fa-facebook"></a>
+
+                </div>
+            </div>
+            <div class="glass-box"  style="height: 61rem; width: 31rem;">
+                <img src="../static/images/admin2.png" alt="" style="height: 30rem; width: 25rem;">
+                <h3>Ritam Koley</h3>
+                <h3>Howrah, West Bengal</h3>
+                <h3>Back End Lead</h3>
+                <h3>+91 7439688379</h3>
+                <h3> <a href="mailto:ritamkoley73@gmail.com" style="color: rgb(2, 0, 0);">ritamkoley73@gmail.com</a>
+                </h3>
+                <div class="share">
+                    <a href="https://www.linkedin.com/in/ritam-koley-b30635286/" class="fab fa-linkedin"></a>
+                    <a href="https://github.com/RitamKoley" class="fab fa-github"></a>
+                    <a href="https://instagram.com/" class="fab fa-instagram"></a>
+                    <a href="https://www.facebook.com/profile.php?id=100015575537041" class="fab fa-facebook"></a>
+
+                </div>
+            </div>
+            
+            <div class="glass-box" style="height: 61rem; width: 31rem;" > 
+                <img src="../static/images/admin4.jpeg" alt="" style="height: 30rem; width: 25rem;">
+                <h3>Dinayan Mallik</h3>
+                <h3>Bankura, West Bengal</h3>
+                <h3>Full Stack Lead</h3>
+                <h3> +91 8637037668</h3>
+                <h3> <a href="mailto:dmallik2001@gmail.com" style="color: rgb(12, 0, 0);">dmallik2001@gmail.com</a>
+                </h3>
+                <div class="share">
+                    <a href="https://www.linkedin.com/in/dinayan-mallik-887b72212/" class="fab fa-linkedin"></a>
+                    <a href="https://github.com/DINAYAN123" class="fab fa-github"></a>
+                    <a href="https://instagram.com/" class="fab fa-instagram"></a>
+                    <a href="https://www.facebook.com/" class="fab fa-facebook"></a>
+
+                </div>
+            </div>
+        
+            
+            
+        </div>
+    </section>
+    <section class="footer">
+        <div class="box-container">
+            <div class="box" style="margin-left:40px">
+                <h3>Quick Links</h3>
+                <a href="{{url_for('index')}}#home"><i class="fas fa-chevron-right"></i>Home</a>
+                <a href="{{url_for('index')}}#services"><i class="fas fa-chevron-right"></i>Services</a>
+                <a href="{{url_for('index')}}#book"><i class="fas fa-chevron-right"></i>Book</a>
+                <a href="{{url_for('index')}}#scans"><i class="fas fa-chevron-right"></i>Scans</a>
+                <a href="{{url_for('index')}}#blogs"><i class="fas fa-chevron-right"></i>Blogs</a>
+                <a href="{{url_for('index')}}#about"><i class="fas fa-chevron-right"></i>About</a>
+            </div>
+            <div class="box" style="margin-left:50px">
+                <h3>Our Services </h3>
+                <a href="https://predimed.streamlit.app/"><i class="fas fa-chevron-right"></i> Predimed</a>
+                <a href="{{url_for('videocall')}}"><i class="fas fa-chevron-right"></i> Documeet</a>
+                <a href="{{url_for('ML')}}"><i class="fas fa-chevron-right"></i> ChikitsaBot</a>
+                <a href="https://recominac.streamlit.app/"><i class="fas fa-chevron-right"></i> Recominac</a>
+                <a href="{{url_for('prediction_form')}}"><i class="fas fa-chevron-right"></i> Mentihelp</a>
+                <a href="{{url_for('nearest_hospital')}}"><i class="fas fa-chevron-right"></i> Curatrack</a>
+
+
+            </div>
+            <div class="box" style="margin-left:60px">
+                <h3>Contact Info</h3>
+                <a href="tel:1800 450 5555" class="phone-btn"><i class="fas fa-phone"></i>+91 1800 450 5555</a>
+                <a href="sms:8245614231" class="sms-btn"><i class="fas fa-sms"></i>+91 8697408311</a>
+                <a href="https://wa.me/6284654278" class="whatsapp-btn"><i class="fab fa-whatsapp"></i>+91 6291737719</a>
+                <a href="mailto:remisense2024@gmail.com"><i class="fas fa-envelope"></i>remisense2024@gmail.com</a>
+                <a href="mailto:tmslproject2024@gmail.com"><i class="fas fa-fax"></i>tmslproject2024@gmail.com</a>
+                <a href="https://maps.app.goo.gl/9P5eRuXpVDFkAiJs5" class="disabled"><i class="fas fa-map-marker-alt"></i>Kolkata, West Bengal, India</a>
+            </div>
+            <div class="box" style="margin-left:140px">
+                <h3>Follow Us</h3>
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i>Facebook</a>
+                <a href="https://www.linkedin.com/in/"><i class="fab fa-linkedin"></i>Linkedin</a>
+                <a href="https://www.instagram.com"><i class="fab fa-instagram"></i>Instagram</a>
+                <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i>Youtube</a>
+                <a href="https://telegram.org/"><i class="fab fa-telegram"></i>Telegram</a>
+                <a href="https://twitter.com/"><i class="fab fa-twitter"></i>Twitter</a>
+            </div>
+        </div>
+
+        <div class="credit">Made With 💚 | Remisense @ 2024</div>
+    </section>
+    <script src="./static/js/script.js"></script>
+</body>
+
+</html>

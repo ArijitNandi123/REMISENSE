@@ -1,0 +1,1426 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Poppins:wght@200&family=Spline+Sans+Mono:ital,wght@1,700&display=swap");
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Poppins:wght@200;300;600;800&family=Spline+Sans+Mono:ital,wght@1,700&display=swap'); */
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+
+/*STYLE OF ALL BOX*/
+
+/* Light Mode Variables */
+:root {
+    --icon-heading-color: #f10707; /* Light mode heading color */
+    --icon-text-color: #000000; /* Light mode text color */
+    --icon-text-hover-color: #fdfdfd; /* Light mode text hover color */
+    
+    --icon-hover-color: #befaee; /* ENTIRE BOX COLOR */
+    --icon-border-color: #4b3131; /* Light mode border color(NOT WORKING) */
+    --icon-color: #fa5252; /* Light mode icon color */
+    --icon-border-hover-color: #fffcfc; /* Light mode border hover color */
+    --green: #16a085;
+    --black: #000000;
+    --orange: #ff0202;
+    --yellow: #ffb74d; /* Added for consistency in dark mode */
+    --light-color: #cec7c7;
+    --box-shadow: 0.5rem 0.5rem 0 #d86a20;
+    --text-shadow: 0.4rem 0.4rem 0 #b3aaaa;
+    --border: 0.2rem solid var(--orange);
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+    --icon-heading-color: #ffbb56; /* Dark mode heading color */
+    --icon-heading-hover-color: #ffffff; /* Dark mode heading hover color */
+    
+    --icon-text-color: #faf7f7; /* Dark mode text color */
+    --icon-text-hover-color: #d0d0d0; /* Dark mode text hover color */
+    
+    --icon-color: #ffb74d; /* Dark mode icon color */
+    --icon-hover-color: #2f0147; /* ENTIRE BOX COLOR CHANGE  */
+    --icon-border-color: #ffb74d; /* Dark mode border color */
+    --icon-border-hover-color: #01130e; /* Dark mode border hover color */
+    --green: #16a085;
+    --black: #ffffff;
+    --yellow: #ffb74d;
+    --light-color: #cec7c7;
+    --box-shadow: 0.5rem 0.5rem 0 #b4981a;
+    --text-shadow: 0.4rem 0.4rem 0 #47312a;
+    --border: 0.2rem solid var(--yellow);
+}
+
+/* Base Styles */
+body {
+    background-size: cover;
+    background-position: center;
+    opacity: 0.95;
+}
+
+/* Selection Color */
+::selection {
+    color: var(--green);
+}
+
+/* Glass Effect */
+.glass, .glass-box, .glass-row {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    border-radius: 20px;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    padding: 2.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Icons Container */
+.icons-container .glass i {
+    font-size: 4.5rem;
+    color: var(--icon-color);
+    padding-bottom: 0.7rem;
+    transition: color 0.3s ease;
+}
+
+.icons-container .glass h3 {
+    font-size: 4.5rem;
+    color: var(--icon-heading-color);
+    text-shadow: var(--text-shadow);
+    padding-bottom: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.icons-container .glass p {
+    font-size: 1.7rem;
+    color: var(--icon-text-color);
+    transition: color 0.3s ease;
+}
+
+/* Services Section */
+.services .box-container .glass-box i {
+    color: var(--icon-color);
+    font-size: 5rem;
+    padding-bottom: 5rem;
+    transition: color 0.3s ease;
+}
+
+.services .box-container .glass-box h3 {
+    color: var(--icon-heading-color);
+    padding: 1rem 0;
+    font-size: 2.5rem;
+    transition: color 0.3s ease;
+}
+
+.services .box-container .glass-box p {
+    color: var(--icon-text-color);
+    font-size: 1.4rem;
+    line-height: 2;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effects for Boxes */
+.glass:hover, .glass-box:hover, .glass-row:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    transform: scale(1.05);
+    box-shadow: 0.6rem 0.6rem 0 var(--icon-border-hover-color);
+}
+
+/* Book Section */
+.book .glass-row form {
+    flex: 1 1 45rem;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: var(--border);
+}
+
+.book .glass-row form select {
+    padding: 1rem;
+    background: var(--black);
+    border: var(--border);
+    color: var(--light-color);
+}
+
+.book .glass-row form input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="submit"] {
+   /* background: var(--green);*/
+    color: var(--black);
+}
+
+.book .glass-row form h3 {
+    color: var(--icon-heading-color);
+    padding-bottom: 1rem;
+    font-size: 3rem;
+}
+
+.book .glass-row form .box {
+    width: 100%;
+    margin: 0.7rem 0;
+    border-radius: 0.5rem;
+    border: var(--border);
+    font-size: 1.6rem;
+    color: var(--icon-text-color);
+    text-transform: none;
+    padding: 1rem;
+}
+
+  /* Base Styles */
+.glass, .glass-box, .glass-row {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    border-radius: 20px;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    padding: 2.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover Effects for Boxes */
+.glass:hover, .glass-box:hover, .glass-row:hover {
+    background-color: var(--icon-hover-color); /* Full color change on hover */
+    color: var(--light-color); /* Adjust text color if needed */
+    transform: scale(1.05); /* Slightly scale up the box */
+    box-shadow: 0.6rem 0.6rem 0 var(--icon-border-hover-color); /* Change shadow to match hover */
+}
+
+
+
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-family: 'Poppins', sans-serif; */
+    /* font-family: 'Spline Sans Mono', monospace; */
+    font-family: "Poppins", sans-serif;
+    text-transform: none;
+    outline: none;
+    border: none;
+    transition: all 0.2s ease-out;
+    text-decoration: none;
+  }
+  
+  html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+  }
+  
+  section {
+    padding: 2rem 9%;
+  }
+
+
+/* Button Styles--KNOW MORE Button */
+.btn-home {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  border: var(--border);
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  color: var(--green);
+  cursor: pointer;
+  font-size: 2.7rem;
+}
+
+.btn-home:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+.btn-home span {
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--green);
+  color: #fff;
+  margin-left: 0.5rem;
+}
+
+.btn-home:hover span {
+  color: var(--green);
+  background: #fff;
+  margin-left: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  border: var(--border);
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  color: var(--green);
+  cursor: pointer;
+  font-size: 1.7rem;
+}
+
+.btn:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+.btn span {
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--green);
+  color: #fff;
+  margin-left: 0.5rem;
+}
+
+.btn:hover span {
+  color: var(--green);
+  background: #fff;
+  margin-left: 1rem;
+}
+
+
+
+
+/* Home Section */
+.home {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 10rem;
+  position: relative;
+}
+
+.home .image {
+  flex: 1 1 45rem;
+}
+
+.home .image img {
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.home .content {
+  flex: 1 1 45rem;
+  padding: 3rem;
+  background: rgba(10, 0, 0, 0);
+  border-radius: 1rem;
+  backdrop-filter: blur(3px);
+  transition: background 0.3s ease;
+}
+
+.home .content:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.home .content h3 {
+  font-size: 6.5rem;
+  font-weight: 900;
+
+  line-height: 1.2;
+
+  /* Removed hover effect */
+}
+
+.home .content p {
+  font-size: 1.7rem;
+
+  line-height: 1.8;
+  padding: 1rem 0;
+  /* Removed hover effect */
+}
+
+.home .content .btn-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: var(--green);
+  color: #fff;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home .content h3 {
+    font-size: 4.5rem;
+  }
+
+  .home .content p {
+    font-size: 1.5rem;
+  }
+
+  .home {
+    padding-top: 5rem;
+  }
+}
+
+
+
+
+/* Header Section */
+.header {
+    padding: 2rem 9%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #202041, #28285b); /* Gradient for a richer effect */
+    transition: background 0.3s ease, box-shadow 0.3s ease; /* Smooth background transition */
+}
+
+.header:hover {
+    background: linear-gradient(135deg, #151533, #202041); /* Darker gradient on hover */
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3); /* Slightly stronger shadow */
+}
+
+.header .logo {
+    font-size: 2.7rem;
+    color: var(--green);
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(22, 160, 133, 0.5); /* Glowing shadow for the logo */
+    padding: 0.5rem 1rem; /* Padding to make the logo stand out */
+    border-radius: 8px; /* Rounded corners for the logo */
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: #121212;
+    font-weight: 600;
+}
+
+.logo i {
+    color: var(--green);
+}
+
+.header .logo:hover {
+    font-weight: bold;
+    color: #ffffff; /* Change the color to white on hover */
+    transform: scale(1.2); /* Slightly larger scale on hover */
+    box-shadow: 0 0 15px rgba(22, 160, 133, 0.8); /* Stronger glowing shadow */
+}
+
+.header .navbar a {
+    font-size: 1.8rem;
+    color: var(--light-color);
+    margin-left: 2.5rem;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease, padding-bottom 0.3s ease;
+}
+
+.header .navbar a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--green);
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.header .navbar a:hover::before {
+    visibility: visible;
+    width: 100%;
+}
+
+.header .navbar a:hover {
+    color: var(--green);
+    padding-bottom: 0.5rem;
+    letter-spacing: 1px; /* Adds a spacing effect on hover */
+    font-weight: 700; /* Make text bolder */
+    transition: all 0.3s ease;
+}
+
+/* Animated Gradient Border for Header */
+.header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(22, 160, 133, 1), rgba(0, 204, 153, 1));
+    background-size: 200% 100%;
+    animation: gradientBorder 3s infinite;
+}
+
+@keyframes gradientBorder {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+/* Menu Button */
+#menu-btn {
+    font-size: 2.5rem;
+    border-radius: 0.5rem;
+    background: #eee;
+    color: var(--green);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: none; /* Initially hidden */
+    transition: background-color 0.3s ease;
+}
+
+#menu-btn:hover {
+    background-color: #d4d4d4;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 1.5rem 5%;
+        flex-direction: column; /* Stack the logo and navbar */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .header .logo {
+        font-size: 2rem; /* Smaller logo size for mobile */
+    }
+
+    .header .navbar a {
+        font-size: 1.6rem; /* Smaller text size for mobile */
+        margin-left: 1.5rem;
+    }
+
+    #menu-btn {
+        display: block; /* Show menu button on smaller screens */
+    }
+
+    .header .navbar {
+        display: none; /* Hide navbar links initially */
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding: 1rem;
+        background: #fff;
+    }
+
+    .header .navbar.active {
+        display: flex; /* Display navbar when menu is active */
+    }
+
+    .header .navbar a {
+        margin: 0.8rem 0; /* Adjust margin for vertical layout */
+    }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 480px) {
+    .header {
+        padding: 1rem 3%;
+    }
+
+    .header .logo {
+        font-size: 1.8rem;
+    }
+
+    .header .navbar a {
+        font-size: 1.4rem;
+    }
+}
+
+  
+
+
+
+/* Icons Container--what we provide */
+
+.icons-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.icons-container .icons {
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  text-align: center;
+  padding: 2.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icons-container .icons:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.icons-container .icons i {
+  font-size: 4.5rem;
+  color: var(--green);
+  padding-bottom: 0.7rem;
+}
+
+.icons-container .icons h3 {
+  font-size: 4.5rem;
+  color: var(--black);
+  text-shadow: var(--text-shadow);
+  padding-bottom: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.icons-container .icons h3:hover {
+  font-weight: bold;
+  color: #333;
+}
+
+.icons-container .icons p {
+  font-size: 1.7rem;
+  color: var(--light-color);
+  transition: color 0.3s ease;
+}
+
+.icons-container .icons p:hover {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Heading */
+.heading {
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  text-shadow: var(--text-shadow);
+  text-transform: none;
+
+  font-size: 5rem;
+  letter-spacing: 0.4rem;
+}
+
+.heading span {
+  text-transform: none;
+  color: var(--green);
+}
+
+
+
+
+
+/* Services Section */
+.services .box-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+}
+
+.services .box-container .box {
+  background-color: var(--background-color); /* Use background color variable */
+  border-radius: 0.5rem;
+  border: 2px solid var(--border-color); /* Use border color variable */
+  box-shadow: var(--box-shadow);
+  padding: 2.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.services .box-container .box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: var(
+    --link-color
+  ); /* Use link color variable for border color on hover */
+}
+
+.services .box-container .box i {
+  color: var(--link-color); /* Use link color variable */
+  font-size: 5rem;
+  padding-bottom: 5rem;
+  transition: color 0.3s ease;
+}
+
+.services .box-container .box i:hover {
+  color: var(--hover-color); /* Use hover color variable */
+}
+
+.services .box-container .box h3 {
+  color: var(--text-color); /* Use text color variable */
+  padding: 1rem 0;
+  font-size: 2.5rem;
+}
+
+.services .box-container .box h3:hover {
+  font-weight: bold;
+  color: var(--text-color); /* Use text color variable */
+}
+
+.services .box-container .box p {
+  color: var(--light-color); /* Use light color variable */
+  font-size: 1.4rem;
+  line-height: 2;
+}
+
+.services .box-container .box p:hover {
+  font-weight: bold;
+  color: var(--light-color); /* Use light color variable */
+}
+
+
+
+/* About Section */
+.about .row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.about .row .image {
+  flex: 1 1 45rem;
+}
+
+.about .row .image img {
+  width: 100%;
+}
+
+.about .row .content {
+  flex: 1 1 45rem;
+}
+
+.about .row .content h3 {
+  color: var(--text-color); /* Use text color variable */
+
+  font-size: 4rem;
+  line-height: 1.8;
+}
+
+.about .row .content p {
+  color: var(--text-color); /* Use text color variable */
+  padding: 1rem 0;
+  font-size: 1.5rem;
+  line-height: 1.8;
+}
+
+
+
+
+/* Book Section */
+.book .row2 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.book .row2 form {
+  flex: 1 1 45rem;
+  background: var(--background-color); /* Use background color variable */
+  border: 2px solid var(--border-color); /* Use border color variable */
+  text-align: center;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.book .row2 form h3 {
+  color: var(--text-color); /* Use text color variable */
+  padding-bottom: 1rem;
+  font-size: 3rem;
+}
+
+.book .row2 form .box {
+  width: 100%;
+  margin: 0.7rem 0;
+  border-radius: 0.5rem;
+  border: 2px solid var(--border-color); /* Use border color variable */
+  font-size: 1.6rem;
+  color: var(--text-color); /* Use text color variable */
+  text-transform: none;
+  padding: 1rem;
+}
+
+
+
+
+/* Doctors Section */
+.doctors .box-container {
+  display: grid;
+  gap: 20rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(20rem, 1fr)
+  ); /* Adjusted for better responsiveness */
+  padding: 1rem;
+}
+
+.doctors .box-container .glass-box {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
+  border-radius: 0.5rem;
+  border: var(--border);
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%; /* Ensure the box doesn't overflow */
+}
+
+.doctors .box-container .glass-box img {
+  height: auto;
+  width: 100%; /* Make the image responsive */
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+  object-fit: cover; /* Ensure the image stays within the box */
+}
+
+/* Heading */
+.doctors .box-container .glass-box h3 {
+  font-size: 1.5rem; /* Adjusted for better fit */
+  text-align: center;
+  font-weight: 600;
+}
+
+.doctors .box-container .glass-box span {
+  color: var(--green);
+  font-size: 1.2rem; /* Adjusted for better fit */
+}
+
+.doctors .box-container .glass-box .share {
+  padding-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.doctors .box-container .glass-box .share a {
+  height: 3.5rem; /* Adjusted for smaller viewports */
+  width: 3.5rem;
+  line-height: 3rem;
+  font-size: 1.3rem; /* Adjusted for smaller viewports */
+  color: var(--green);
+  border-radius: 0.5rem;
+  border: var(--border);
+  margin: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.doctors .box-container .glass-box .share a:hover {
+  background: var(--green);
+  color: #fff;
+  box-shadow: var(--box-shadow);
+}
+
+  
+  
+  
+  
+
+/* Reviews Section */
+/* Light Mode Variables (Default) */
+
+:root {
+  --review-heading-color: #350b0b; /* Light mode heading color */
+  --review-heading-hover: #fff9f9; /* Light mode heading hover color */
+  --review-text-color: #000000; /* Light mode text color */
+  --review-text-hover: #383232; /* Light mode text hover color */
+  --review-stars-color: #fa5252; /* Light mode stars color */
+  --review-stars-hover: #eb0b0b; /* Light mode stars hover color */
+  --review-border-color: #f53434; /* Light mode border color */
+  --review-border-hover: #fffcfc; /* Light mode border hover color */
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+  --review-heading-color: #e0e0e0; /* Dark mode heading color */
+  --review-heading-hover: #ffffff; /* Dark mode heading hover color */
+  --review-text-color: #faf7f7; /* Dark mode text color */
+  --review-text-hover: #d0d0d0; /* Dark mode text hover color */
+  --review-stars-color: #ffb74d; /* Dark mode stars color */
+  --review-stars-hover: #ffd54f; /* Dark mode stars hover color */
+  --review-border-color: #ffb74d; /* Dark mode border color */
+  --review-border-hover: #d0d0d0; /* Dark mode border hover color */
+}
+
+/* Reviews Section */
+.review .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+  gap: 2rem;
+}
+
+.review .box-container .box {
+  border: 1px solid var(--review-border-color); /* Border color based on mode */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.review .box-container .box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 1.2rem;
+  border-color: var(--review-border-hover); /* Hover border color */
+}
+
+.review .box-container .box img {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 0.5rem solid var(--review-border-color);
+  transition: border-color 0.3s ease;
+}
+
+.review .box-container .box img:hover {
+  border-color: var(--review-border-hover);
+}
+
+.review .box-container .box h3 {
+  color: var(--review-heading-color);
+  font-size: 2.2rem;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.review .box-container .box h3:hover {
+  font-weight: 700;
+  color: var(--review-heading-hover);
+}
+
+.review .box-container .box .stars i {
+  color: var(--review-stars-color);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.review .box-container .box .stars i:hover {
+  color: var(--review-stars-hover);
+}
+
+.review .box-container .box .text {
+  color: var(--review-text-color);
+  line-height: 1.8;
+  font-size: 1.6rem;
+  padding-top: 4rem;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.review .box-container .box .text:hover {
+  font-weight: 700;
+  color: var(--review-text-hover);
+}
+
+.review .box-container .box::before {
+  content: "";
+  position: absolute;
+  top: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--green), rgba(0, 0, 0, 0.1));
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  height: 25rem;
+  width: 120%;
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+
+/* Blog Section (Example Layout) */
+
+/* Base (Light Mode) - Default Variables */
+:root {
+  --blog-heading-color: #573016; /* Light mode heading color */
+  --blog-heading-hover-color: #0f0000; /* Light mode heading hover color */
+  --blog-text-color: #000000; /* Light mode text color */
+  --blog-text-hover-color: #a51919; /* Light mode text hover color */
+  --blog-icon-color: #ca3434; /* Light mode icon color */
+  --blog-icon-hover-color: #16a085; /* Light mode icon hover color */
+  --blog-border-color: #f53434; /* Light mode border color */
+  --blog-border-hover-color: #fffcfc; /* Light mode border hover color */
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+  --blog-heading-color: #e0e0e0; /* Dark mode heading color */
+  --blog-heading-hover-color: #ffffff; /* Dark mode heading hover color */
+  --blog-text-color: #faf7f7; /* Dark mode text color */
+  --blog-text-hover-color: #faf8a2; /* Dark mode text hover color */
+  --blog-icon-color: #ffb74d; /* Dark mode icon color */
+  --blog-icon-hover-color: #ffd54f; /* Dark mode icon hover color */
+  --blog-border-color: #ffb74d; /* Dark mode border color */
+  --blog-border-hover-color: #d0d0d0; /* Dark mode border hover color */
+}
+
+/* Apply Colors to Body */
+body {
+  color: var(--blog-text-color); /* Text color based on mode */
+  background-color: var(
+    --background-color
+  ); /* Background color based on mode */
+  font-family: "Arial", sans-serif;
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth color transition */
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  color: var(--blog-heading-color); /* Heading color based on mode */
+  text-align: center;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease; /* Smooth transition for heading colors */
+}
+
+h1:hover,
+h2:hover,
+h3:hover {
+  color: var(
+    --blog-heading-hover-color
+  ); /* Hover color for headings based on mode */
+  font-weight: bold;
+}
+
+/* Paragraphs */
+p {
+  color: var(--blog-text-color); /* Text color based on mode */
+ 
+  transition: color 0.3s ease;
+}
+
+p:hover {
+  color: var(--blog-text-hover-color); /* Hover color for text based on mode */
+  font-weight: bold;
+}
+
+/* Icons */
+.icon {
+  color: var(--blog-icon-color); /* Icon color based on mode */
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: var(--blog-icon-hover-color); /* Hover color for icons based on mode */
+  font-weight: bold;
+}
+
+/* Container for Centered Layout */
+.container {
+  display: flex;
+  justify-content: center; /* Horizontal alignment */
+  align-items: center; /* Vertical alignment */
+  flex-direction: column;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center; /* Ensure text remains centered */
+}
+
+/* Blog Section (Example Layout) */
+.blogs .box-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+}
+
+.blogs .box-container .glass-box {
+  border: 1px solid var(--blog-border-color); /* Border color based on mode */
+  border-radius: 1rem; /* Rounded corners for boxes */
+  padding: 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  transition: border-color 0.3s ease, border-radius 0.3s ease; /* Added transition for border color */
+}
+
+.blogs .box-container .glass-box:hover {
+  border-color: var(
+    --blog-border-hover-color
+  ); /* Border hover color based on mode */
+  border-radius: 1.2rem; /* Slightly increase border-radius on hover */
+}
+
+.blogs .box-container .glass-box .content h3 {
+  color: var(--blog-heading-color); /* Heading color based on mode */
+  font-size: 3rem;
+  transition: color 0.3s ease, font-weight 0.3s ease; /* Smooth hover transition */
+}
+
+.blogs .box-container .glass-box .content h3:hover {
+  font-weight: bold;
+  color: var(--blog-heading-hover-color); /* Heading hover color */
+}
+
+.blogs .box-container .glass-box .content p {
+  color: var(--blog-text-color); /* Text color based on mode */
+  font-size: 1.5rem;
+  line-height: 1.8;
+  padding: 1rem 0;
+  transition: color 0.3s ease, font-weight 0.3s ease; /* Smooth hover transition */
+}
+
+.blogs .box-container .glass-box .content p:hover {
+  font-weight: bold;
+  color: var(--blog-text-hover-color); /* Text hover color */
+}
+
+.blogs .box-container .glass-box .content .icon {
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blogs .box-container .glass-box .content .icon a {
+  font-size: 1.4rem;
+  color: var(--blog-icon-color); /* Icon color based on mode */
+  transition: color 0.3s ease, font-weight 0.3s ease; /* Added transition for hover effect */
+}
+
+.blogs .box-container .glass-box .content .icon a:hover {
+  color: var(--blog-icon-hover-color); /* Hover color for icons based on mode */
+  font-weight: bold; /* Bold effect on hover */
+}
+
+
+
+/* About Section */
+
+.about .content a:hover i {
+  padding-right: 0.5rem;
+  color: #f8f0f0; /* Font color set to black */
+  margin-left: 0.5rem;
+}
+
+
+
+
+/* Contact Section */
+
+.contact_section .form_container {
+    margin-right: 45px;
+  }
+  
+  .contact_section .form_container input {
+    width: 400%;
+    border: 1px solid var(--green); /* Use variable for border color */
+    height: 50px;
+    margin-bottom: 25px;
+    padding-left: 15px;
+    background-color: transparent;
+    outline: none;
+    color: var(--light-color); /* Font color using variable */
+  }
+  
+  .contact_section .form_container input::placeholder {
+    color: var(--light-color); /* Placeholder text color using variable */
+  }
+  
+  .contact_section .form_container button {
+    border: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 15px 65px;
+    background-color: var(--green); /* Use variable for background color */
+    color: var(--light-color); /* Font color using variable */
+    border-radius: 0;
+    font-weight: bold;
+  }
+  
+  .contact_section .form_container button:hover {
+    font-weight: bold; /* Bold effect on hover */
+    background-color: #004d40; /* Slightly darker shade for hover effect */
+  }
+  
+  /* Contact Section - Row Layout */
+  
+  .contact_section .row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    margin-right: 60px;
+  }
+  
+  .contact_section .row .img-box {
+    flex: 1 1 45rem;
+    margin-left: auto;
+  }
+  
+  .contact_section .row .img-box img {
+    width: 180%;
+  }
+  
+  .img-box {
+    margin-right: 170px;
+  }
+  
+  /* Glass Hide Section */
+  
+  .glass-hide {
+    background: linear-gradient(
+      135deg,
+      rgb(211, 190, 190),
+      rgba(255, 255, 255, 0.178)
+    );
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -20px 28px 0 rgba(253, 244, 244, 0.534);
+    text-align: center;
+    padding: 2.5rem;
+    height: 500px;
+    margin: auto;
+  }
+  
+  .glass-hide .btn {
+    margin: auto;
+    font-size: 3.4rem;
+    margin-top: 15rem;
+    color: #000000; /* Font color using variable */
+  }
+  
+  .glass-hide .btn:hover {
+    font-weight: bold; /* Bold effect on hover */
+    color: #444; /* Slight color variation on hover */
+  }
+  
+  /* Table Styling */
+  
+  table {
+    width: 100%;
+    justify-content: space-between;
+    border: var(--border);
+    padding: 20px;
+    border-radius: 0.5rem;
+  }
+  
+  table td,
+  table th,
+  table td a {
+    color: var(--black); /* Font color using variable */
+  }
+  
+  table td:hover,
+  table th:hover,
+  table td a:hover {
+    font-weight: bold; /* Bold effect on hover */
+    color: #666; /* Slight color variation on hover */
+  }
+  
+  /* Glass Row Book Section */
+  
+  .glass-row-book {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0)
+    );
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+    padding: 2.5rem;
+    margin: auto;
+    width: 95%;
+  }
+  
+
+  /* Media Query for Mobile View */
+@media (max-width: 767px) {
+    .contact_section .form_container {
+      margin: 0; /* Remove right margin */
+      width: 100%; /* Full width */
+    }
+  
+    .contact_section .form_container input {
+      width: 100%; /* Adjust to fit container */
+      height: auto; /* Adjust height for better fit */
+      margin-bottom: 15px; /* Reduce margin */
+      padding-left: 10px; /* Adjust padding */
+    }
+  
+    .contact_section .form_container button {
+      padding: 10px 20px; /* Adjust padding */
+      font-size: 1.2rem; /* Adjust font size */
+      width: 100%; /* Full width */
+    }
+  
+    .contact_section .row {
+      flex-direction: column; /* Stack vertically */
+      margin-right: 0; /* Remove right margin */
+      gap: 1.5rem; /* Adjust gap */
+    }
+  
+    .contact_section .row .img-box {
+      flex: 1 1 100%; /* Full width on mobile */
+      margin-left: 0; /* Remove left margin */
+      margin-right: 0; /* Remove right margin */
+    }
+  
+    .contact_section .row .img-box img {
+      width: 100%; /* Full width */
+      height: auto; /* Maintain aspect ratio */
+      max-width: 100%; /* Ensure image doesn't overflow */
+    }
+  
+    .glass-hide {
+      height: auto; /* Adjust height */
+      padding: 1.5rem; /* Adjust padding */
+      margin: 1rem auto; /* Center with margin */
+      width: 90%; /* Adjust width */
+    }
+  
+    table {
+      font-size: 1.2rem; /* Adjust font size */
+      padding: 10px; /* Adjust padding */
+    }
+  
+    table td,
+    table th {
+      padding: 10px; /* Adjust cell padding */
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+/* Footer Section */
+.footer .box-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+}
+
+.footer .box-container .box h3 {
+  font-size: 2.5rem;
+  color: var(--text-color); /* Use text color variable */
+  padding: 1rem 0;
+}
+
+.footer .box-container .box a {
+  font-size: 1.5rem;
+
+  padding: 1rem 0;
+  display: block;
+}
+
+.footer .box-container .box a:hover {
+  font-weight: bold;
+  color: var(--link-color); /* Use link color variable */
+}
+
+.footer .box-container .box a i {
+  padding-right: 0.5rem;
+  color: var(--link-color); /* Use link color variable */
+}
+
+.footer .credit {
+  padding: 1rem;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 2rem;
+
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+}
+
+.footer .credit span {
+  color: var(--link-color); /* Use link color variable */
+  font-weight: 800;
+}
+/* Mobile View */
+@media (max-width: 768px) {
+    footer .footer-container {
+      flex-direction: column; /* Stack columns vertically */
+      text-align: center;
+    }
+  
+    footer .footer-container .column {
+      flex: 1 1 100%; /* Columns take full width on mobile */
+      margin-bottom: 2rem;
+    }
+  
+    footer .footer-container .social-icons {
+      justify-content: center; /* Center icons */
+    }
+  
+    footer .footer-container .social-icons i {
+      font-size: 3rem; /* Larger icons for easier tap on mobile */
+    }
+  }
+  
+  /* Extra Small Devices */
+  @media (max-width: 480px) {
+    footer {
+      padding: 1rem; /* Reduce padding for smaller devices */
+    }
+  
+    footer .footer-container .column h3 {
+      font-size: 1.6rem; /* Smaller heading font size */
+    }
+  
+    footer .footer-container .column p,
+    footer .footer-container .column a {
+      font-size: 1.4rem; /* Smaller text */
+    }
+  
+    footer .footer-container .social-icons i {
+      font-size: 2.8rem; /* Slightly smaller icons */
+    }
+  }
+  
