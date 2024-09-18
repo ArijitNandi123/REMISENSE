@@ -151,10 +151,10 @@ body {
 }
 
 .book .glass-row form select {
-    padding: 1rem;
-    background: var(--black);
-    border: var(--border);
-    color: var(--light-color);
+  padding: 1rem;
+  background:var(--light-color);
+  border: var(--border);
+  color:  var(--black);
 }
 
 .book .glass-row form input[type="text"],
