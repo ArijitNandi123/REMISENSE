@@ -561,7 +561,7 @@ input[type="submit"] {
   }
 
   #menu-btn {
-      left: 15rem; /* Slightly adjust the position for very small screens */
+      left: 32rem; /* Slightly adjust the position for very small screens */
   }
 }
   
