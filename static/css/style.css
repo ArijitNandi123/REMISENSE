@@ -485,76 +485,85 @@ input[type="submit"] {
     }
 }
 
-/* Menu Button */
+/* Menu Button (hidden by default for larger screens) */
 #menu-btn {
-    font-size: 2.5rem;
-    border-radius: 0.5rem;
-    background: #eee;
-    color: var(--green);
-    padding: 1rem 1.5rem;
-    cursor: pointer;
-    display: none; /* Initially hidden */
-    transition: background-color 0.3s ease;
+  font-size: 2.5rem;
+  border-radius: 0.5rem;
+  background: #eee;
+  color: var(--green);
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: none; /* Hide the menu button on larger screens */
+  position: absolute; /* Position relative to the header */
+  right: auto; /* Ensures it doesn't go extreme right */
+  left: 8rem; /* Place it to the right of the logo */
 }
 
-#menu-btn:hover {
-    background-color: #d4d4d4;
+/* Navbar styles */
+.header .navbar {
+  display: flex; /* Full navbar visible on larger screens */
+  gap: 2rem;
 }
 
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-    .header {
-        padding: 1.5rem 5%;
-        flex-direction: column; /* Stack the logo and navbar */
-        align-items: flex-start; /* Align items to the left */
-    }
-
-    .header .logo {
-        font-size: 2rem; /* Smaller logo size for mobile */
-    }
-
-    .header .navbar a {
-        font-size: 1.6rem; /* Smaller text size for mobile */
-        margin-left: 1.5rem;
-    }
-
-    #menu-btn {
-        display: block; /* Show menu button on smaller screens */
-    }
-
-    .header .navbar {
-        display: none; /* Hide navbar links initially */
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        padding: 1rem;
-        background: #fff;
-    }
-
-    .header .navbar.active {
-        display: flex; /* Display navbar when menu is active */
-    }
-
-    .header .navbar a {
-        margin: 0.8rem 0; /* Adjust margin for vertical layout */
-    }
+.header .navbar a {
+  font-size: 1.6rem;
+  margin-left: 1.5rem;
+  text-decoration: none;
 }
 
-/* Extra small screens */
-@media screen and (max-width: 480px) {
-    .header {
-        padding: 1rem 3%;
-    }
-
-    .header .logo {
-        font-size: 1.8rem;
-    }
-
-    .header .navbar a {
-        font-size: 1.4rem;
-    }
+/* Mode Toggle Button */
+.mode-toggle {
+  font-size: 1.5rem;
+  position: absolute;
+  right: 1rem;
+  top: 1.5rem;
 }
 
+/* Responsive Styles for tablets and smaller devices */
+@media (max-width: 768px) {
+  #menu-btn {
+      display: block; /* Show menu button on smaller screens */
+      margin-left: 1rem; /* Space it from the logo */
+  }
+
+  /* Hide the navbar links on smaller screens initially */
+  .header .navbar {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      padding: 1rem;
+      background-color: #fff;
+      position: absolute;
+      top: 100%;
+      left: 0;
+  }
+
+  /* When active, display the navbar links */
+  .header .navbar.active {
+      display: flex;
+  }
+}
+
+/* Extra small screens (e.g., mobile phones) */
+@media (max-width: 480px) {
+  .header {
+      padding: 1rem 3%;
+  }
+
+  .header .logo {
+      font-size: 1.8rem;
+  }
+
+  .header .navbar a {
+      font-size: 1.4rem;
+  }
+
+  #menu-btn {
+      left: 15rem; /* Slightly adjust the position for very small screens */
+  }
+}
   
 
 
